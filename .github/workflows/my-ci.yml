@@ -2,7 +2,7 @@ name: CI for my fork
 
 on:
   release:
-    types: [published, created]
+    types: [published]
 
 jobs:
   pypi-publish:
