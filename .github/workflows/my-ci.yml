@@ -1,0 +1,20 @@
+name: CI for my fork
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  pypi-publish:
+    name: Publish to PyPI
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Publish PyPi package
+        uses: code-specialist/pypi-poetry-publish@v1
+        with:
+          PACKAGE_DIRECTORY: "./example-package/"
+          PYTHON_VERSION: "3.12"
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PUBLISH_REGISTRY_PASSWORD }}
